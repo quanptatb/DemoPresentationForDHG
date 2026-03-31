@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bizen Catering - Hồ Sơ Năng Lực (DHG Demo)</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- Reveal.js CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/white.min.css" id="theme">
+  
+  <!-- Custom Styling aligned with User Guidelines -->
+  <style>
+    :root {
+      --primary-green: #155531; /* Deep Green */
+      --secondary-navy: #1A3A6B; /* Navy */
+      --accent-orange: #E86A28; /* Warm Orange */
+      --pure-white: #FFFFFF;
+      --light-gray: #F7F9FA;
+      --text-dark: #2D3748;
+    }
+
+    body {
+      background-color: var(--light-gray);
+    }
+
+    .reveal {
+      font-family: 'Open Sans', sans-serif;
+      color: var(--text-dark);
+      font-size: 28px;
+    }
+
+    .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--primary-green);
+      text-transform: none;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    
+    .reveal h1 { font-size: 2.2em; color: var(--secondary-navy); font-weight: 800; }
+    .reveal h2 { font-size: 1.6em; margin-bottom: 30px; border-bottom: 3px solid var(--accent-orange); padding-bottom: 15px; display: inline-block; }
+    .reveal h3 { font-size: 1.3em; }
+
+    /* Special text colors */
+    .text-green { color: var(--primary-green) !important; }
+    .text-navy { color: var(--secondary-navy) !important; }
+    .text-orange { color: var(--accent-orange) !important; font-weight: bold; }
+    .text-white { color: var(--pure-white) !important; }
+
+    .slide-wrapper {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* Layout Utilities */
+    .split-layout {
+      display: flex;
+      gap: 40px;
+      align-items: stretch;
+      margin-top: 20px;
+    }
+    .split-col {
+      flex: 1;
+      background: var(--pure-white);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      text-align: left;
+    }
+    
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    
+    .card {
+      background: var(--pure-white);
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      text-align: center;
+      border-top: 4px solid var(--primary-green);
+    }
+    .card.accent { border-top-color: var(--accent-orange); }
+    
+    .large-number {
+      font-size: 2.5em;
+      font-weight: 800;
+      color: var(--accent-orange);
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    ul.custom-list {
+      list-style-type: none;
+      padding: 0;
+      text-align: left;
+    }
+    ul.custom-list li {
+      margin-bottom: 15px;
+      position: relative;
+      padding-left: 30px;
+      font-size: 0.9em;
+    }
+    ul.custom-list li::before {
+      content: '✔';
+      color: var(--accent-orange);
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+    }
+
+    /* Process Arrow */
+    .process-flow {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #fff;
+      padding: 30px;
+      border-radius: 50px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      margin-top: 40px;
+    }
+    .process-step {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      color: var(--secondary-navy);
+      font-size: 0.9em;
+    }
+    .process-arrow {
+      color: var(--accent-orange);
+      font-weight: bold;
+    }
+
+    /* Images */
+    .img-fluid {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+    
+    .img-cover {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    /* Footer Info */
+    .slide-footer {
+      position: absolute;
+      bottom: 20px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 0.4em;
+      color: #718096;
+    }
+    
+    .timeline-container { display: flex; justify-content: space-between; align-items: flex-start; margin-top: 40px; position: relative; }
+    .timeline-container::before { content: ''; position: absolute; top: 25px; left: 0; width: 100%; height: 3px; background: #e2e8f0; z-index: -1; }
+    .timeline-item { width: 30%; text-align: center; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+    .timeline-year { font-family: 'Montserrat'; font-weight: 800; font-size: 1.5em; color: var(--primary-green); margin-bottom: 10px; }
+
+    /* Org Tree Placeholder */
+    .org-tree { background: #fff; padding: 30px; border-radius: 12px; margin-top:30px; }
+    .org-box { border: 2px solid var(--primary-green); padding: 10px 20px; border-radius: 8px; display: inline-block; font-weight: bold; background: var(--light-gray); }
+    .org-line { width: 2px; height: 30px; background: var(--primary-green); margin: 0 auto; }
+    .org-row { display: flex; justify-content: center; gap: 10px; }
+    .org-row .org-box { font-size: 0.7em; }
+
+  </style>
+</head>
+<body>
+
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- PHẦN 1: TỔNG QUAN -->
+      
+      <!-- Slide 1: Trang bìa -->
+      <section data-background-image="https://images.unsplash.com/photo-1590846406792-0adc7f638f1d?q=80&w=2000&auto=format&fit=crop" data-background-opacity="0.15">
+        <h1 class="text-navy" style="font-size: 2.8em; margin-bottom: 10px;">HỒ SƠ NĂNG LỰC</h1>
+        <h2 style="border: none; font-size: 1.8em; color: var(--primary-green); text-transform: uppercase;">BIZEN CATERING SERVICES</h2>
+        <div style="width: 80px; height: 4px; background: var(--accent-orange); margin: 20px auto;"></div>
+        <p style="font-family: 'Montserrat', sans-serif; font-size: 1.2em; font-weight: 600; color: #333;">Giải pháp cung cấp suất ăn công nghiệp toàn diện</p>
+        
+        <div style="margin-top: 80px; font-size: 0.5em; color: #555; background: rgba(255,255,255,0.8); padding: 15px; border-radius: 8px; display: inline-block;">
+          📍 Lô C2, khu phố 4, P. Tân Hiệp, Biên Hòa | 🌐 bizen.com.vn | ✉️ Bizhome@bizen.com.vn
+        </div>
+        
+        <aside class="notes">
+          Kính chào quý Ban Lãnh Đạo. Hôm nay, Công ty TNHH Hỗ trợ Công nghiệp Bizen rất vinh dự được trình bày giải pháp cung cấp suất ăn công nghiệp, mang tiêu chuẩn quốc tế nhưng vẫn giữ trọn vẹn hương vị 'cơm nhà nấu' đến quý nhà máy.
+        </aside>
+      </section>
+
+      <!-- Slide 2: Lịch sử -->
+      <section>
+        <h2>Lịch sử hình thành & Phát triển</h2>
+        <div class="timeline-container">
+          <div class="timeline-item">
+            <div class="timeline-year">2010</div>
+            <div style="font-size: 0.8em;">Tiền thân <b>Bizcafe'</b><br>TT Dịch vụ IP Amata</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year text-orange">2012</div>
+            <div style="font-size: 0.8em;">Thành lập<br><b>Bizen Catering Services</b></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">HIỆN TẠI</div>
+            <div style="font-size: 0.8em;">Đội ngũ <span class="text-orange">>10 năm</span> gắn bó chuyên sâu suất ăn công nghiệp</div>
+          </div>
+        </div>
+        <aside class="notes">
+          Được thành lập từ năm 2012, với tiền thân là nhà hàng Bizcafe' từ 2010, Bizen tự hào sở hữu một đội ngũ chuyên gia có hơn 10 năm kinh nghiệm gắn bó chuyên sâu trong lĩnh vực suất ăn công nghiệp. Chúng tôi kế thừa phong cách phục vụ nhà hàng để biến những bữa ăn công nghiệp không còn khô khan.
+        </aside>
+      </section>
+
+      <!-- Slide 3: Ban Lãnh Đạo -->
+      <section>
+        <h2>Ban Lãnh Đạo Bizen</h2>
+        <div class="split-layout">
+          <div class="split-col">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=600&auto=format&fit=crop" class="img-fluid" style="height:250px; width:100%; object-fit:cover;" alt="Chairman">
+            <h3 class="text-navy" style="margin-top: 15px; font-size: 1.1em;">Ông Trần Trung Hiếu</h3>
+            <p style="font-size: 0.7em; font-weight: bold; color: var(--accent-orange); margin-top:-10px;">Founder & Chairman</p>
+            <ul class="custom-list">
+              <li>17 năm kinh nghiệm quản lý tài chính dự án Điện lực VN</li>
+              <li>Nguyên TGĐ Công ty CP Chuẩn A</li>
+            </ul>
+          </div>
+          <div class="split-col">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop" class="img-fluid" style="height:250px; width:100%; object-fit:cover;" alt="CEO">
+            <h3 class="text-navy" style="margin-top: 15px; font-size: 1.1em;">Bà Nguyễn Thị Thanh Nga</h3>
+            <p style="font-size: 0.7em; font-weight: bold; color: var(--accent-orange); margin-top:-10px;">Founder & CEO</p>
+            <ul class="custom-list">
+              <li>12 năm kinh nghiệm quản lý tài sản</li>
+              <li>Chuyên gia thiết kế thực đơn & vận hành bếp</li>
+            </ul>
+          </div>
+        </div>
+        <aside class="notes">
+          Đứng đầu Bizen là sự kết hợp hoàn hảo giữa năng lực quản trị tài chính minh bạch của ông Trần Trung Hiếu và sự am hiểu sâu sắc về vận hành, thiết kế dinh dưỡng của bà Nguyễn Thị Thanh Nga. Sự lãnh đạo này đảm bảo Bizen phát triển vững chắc và chuyên nghiệp.
+        </aside>
+      </section>
+
+      <!-- Slide 4: Sơ đồ tổ chức -->
+      <section>
+        <h2>Sơ đồ tổ chức</h2>
+        <div class="org-tree">
+          <div class="org-box" style="font-size:1em; border-color:var(--secondary-navy); color:var(--secondary-navy);">Ban Giám Đốc</div>
+          <div class="org-line"></div>
+          <div style="width: 80%; height: 2px; background: var(--primary-green); margin: 0 auto;"></div>
+          <div class="org-row" style="margin-top: 20px;">
+            <div class="org-box">Sản xuất</div>
+            <div class="org-box">Kinh doanh</div>
+            <div class="org-box text-white" style="background: var(--accent-orange); border-color: var(--accent-orange);">Quản lý Chất lượng (QC)</div>
+            <div class="org-box">Thu mua</div>
+            <div class="org-box">Kế toán</div>
+            <div class="org-box">Nhân sự</div>
+          </div>
+          <p style="font-size: 0.7em; margin-top: 30px; color: #666;">
+            * Bộ phận QC hoạt động độc lập, báo cáo trực tiếp cho Giám đốc để đảm bảo tính khách quan tuyệt đối.
+          </p>
+        </div>
+        <aside class="notes">
+          Bizen vận hành với một sơ đồ tổ chức tinh gọn, chuyên môn hóa cao. Nổi bật nhất là sự độc lập của Phòng Quản lý chất lượng (QC), giúp kiểm soát chéo mọi khâu từ thu mua đến phục vụ, đảm bảo an toàn tuyệt đối.
+        </aside>
+      </section>
+
+      <!-- Slide 5: CSR -->
+      <section>
+        <h2>Giá trị Cốt lõi & Trách nhiệm Xã hội</h2>
+        <div class="grid-3" style="grid-template-columns: repeat(5, 1fr); gap: 10px;">
+          <div class="card" style="padding: 15px;">
+            <div style="font-size: 2em; margin-bottom: 10px;">🛡️</div>
+            <h4 style="font-size: 0.75em;">An toàn<br>toàn diện</h4>
+          </div>
+          <div class="card" style="padding: 15px;">
+            <div style="font-size: 2em; margin-bottom: 10px;">🤝</div>
+            <h4 style="font-size: 0.75em;">Cam kết<br>đồng hành</h4>
+          </div>
+          <div class="card" style="padding: 15px;">
+            <div style="font-size: 2em; margin-bottom: 10px;">❤️</div>
+            <h4 style="font-size: 0.75em;">Tận tâm<br>tận lực</h4>
+          </div>
+          <div class="card" style="padding: 15px;">
+            <div style="font-size: 2em; margin-bottom: 10px;">📈</div>
+            <h4 style="font-size: 0.75em;">Liên tục<br>cải tiến</h4>
+          </div>
+          <div class="card" style="padding: 15px;">
+            <div style="font-size: 2em; margin-bottom: 10px;">🌱</div>
+            <h4 style="font-size: 0.75em;">Phát triển<br>bền vững</h4>
+          </div>
+        </div>
+        <div class="split-layout" style="margin-top: 30px; align-items: center;">
+          <div style="flex: 2; text-align: left;">
+            <p style="font-size: 0.85em; font-weight: 600;">Cam kết CSR (Corporate Social Responsibility)</p>
+            <p style="font-size: 0.7em;">Hỗ trợ cộng đồng vùng sâu vùng xa, quỹ chống Covid-19, tối ưu hóa năng lượng tái tạo và hệ thống xử lý nước thải đạt chuẩn bảo vệ môi trường.</p>
+          </div>
+          <div style="flex: 1;">
+            <img src="https://images.unsplash.com/photo-1593113565694-c700e57662c2?q=80&w=400&auto=format&fit=crop" class="img-fluid" alt="Charity">
+          </div>
+        </div>
+        <aside class="notes">
+          Năm giá trị cốt lõi dẫn đường cho mọi hành động của chúng tôi, trong đó 'An toàn toàn diện' là sinh mệnh. Bên cạnh kinh doanh, Bizen cam kết thực hiện Trách nhiệm Xã hội qua việc hỗ trợ cộng đồng, tối ưu hóa năng lượng và bảo vệ môi trường.
+        </aside>
+      </section>
+
+      <!-- Slide 6: Tầm nhìn Sứ mệnh -->
+      <section>
+        <h2>Tầm nhìn & Sứ mệnh</h2>
+        <div class="split-layout" style="flex-direction: column; gap: 30px;">
+          <div class="card" style="text-align: left; display: flex; align-items: center; gap: 30px;">
+            <div style="font-size: 4em; color: var(--secondary-navy);">👁️</div>
+            <div>
+              <h3 class="text-navy" style="font-size: 1.2em; margin-bottom: 5px;">TẦM NHÌN</h3>
+              <p style="font-size: 0.9em; margin: 0;">Trở thành đơn vị cung cấp suất ăn công nghiệp dẫn đầu khu vực Đông Nam Bộ trước năm <strong>2025</strong>.</p>
+            </div>
+          </div>
+          <div class="card accent" style="text-align: left; display: flex; align-items: center; gap: 30px;">
+            <div style="font-size: 4em; color: var(--accent-orange);">🏔️</div>
+            <div>
+              <h3 class="text-orange" style="font-size: 1.2em; margin-bottom: 5px;">SỨ MỆNH</h3>
+              <p style="font-size: 0.9em; margin: 0;">Trợ thủ đắc lực phục vụ bữa ăn <span class="text-green; font-weight:bold;">"như cơm nhà nấu"</span>, cân bằng dinh dưỡng, tái tạo năng lượng cho người lao động.</p>
+            </div>
+          </div>
+        </div>
+        <aside class="notes">
+          Sứ mệnh lớn nhất của Bizen là trở thành trợ thủ đắc lực cho Ban giám đốc nhà máy, chăm lo từng bữa ăn 'như cơm nhà nấu', giúp người lao động có trạng thái sức khỏe và tinh thần tốt nhất để sản xuất.
+        </aside>
+      </section>
+
+      <!-- PHẦN 2: NĂNG LỰC -->
+
+      <!-- Slide 7: Năng lực Tài chính -->
+      <section>
+        <h2>Năng lực Tài chính & Pháp lý</h2>
+        <p style="font-size: 0.8em; margin-bottom: 30px;">Bảo chứng cao nhất cho sự cam kết dài hạn và an toàn.</p>
+        <div class="split-layout">
+          <div class="split-col" style="text-align: center; border: 2px solid var(--accent-orange);">
+            <p style="font-size: 0.9em; font-weight: bold; margin-bottom: 10px;">Vốn điều lệ</p>
+            <div class="large-number">10 TỶ</div>
+            <p style="font-size: 0.7em;">ĐỒNG</p>
+          </div>
+          <div class="split-col" style="text-align: center; border: 2px solid var(--primary-green);">
+            <p style="font-size: 0.9em; font-weight: bold; margin-bottom: 10px;">Bảo hiểm Trách nhiệm SP</p>
+            <div class="large-number text-green">3 TỶ</div>
+            <p style="font-size: 0.7em;">ĐỒNG / NĂM (PJICO)<br>(50.000.000 VNĐ / người / vụ)</p>
+          </div>
+        </div>
+        <aside class="notes">
+          Để quý vị hoàn toàn an tâm khi hợp tác, Bizen chứng minh năng lực tài chính với vốn điều lệ 10 tỷ đồng. Đặc biệt, chúng tôi sở hữu gói bảo hiểm trách nhiệm sản phẩm từ PJICO lên tới 3 tỷ đồng mỗi năm. Đây là cam kết pháp lý cao nhất cho sự an toàn của quý vị.
+        </aside>
+      </section>
+
+      <!-- Slide 8: Năng suất -->
+      <section>
+        <h2>Năng suất vượt trội & Cơ sở hạ tầng</h2>
+        <div class="split-layout">
+          <div class="split-col" style="flex: 1.5;">
+            <img src="https://images.unsplash.com/photo-1578474846511-04ba529f0b88?q=80&w=1000&auto=format&fit=crop" class="img-fluid" style="height: 300px;" alt="Industrial Kitchen">
+          </div>
+          <div class="split-col" style="display: flex; flex-direction: column; justify-content: center;">
+            <h3 class="text-orange" style="font-size: 1.2em;">Năng lực phục vụ</h3>
+            <div class="large-number">> 20.000</div>
+            <p style="font-size: 0.8em; font-weight: bold; text-transform: uppercase;">Suất ăn / ngày</p>
+            <div style="margin-top: 20px;">
+              <p style="font-size: 0.8em; font-weight: bold; color: var(--primary-green);">Vận hành linh hoạt:</p>
+              <ul class="custom-list">
+                <li>Bếp Trung tâm quy mô lớn</li>
+                <li>Tiếp quản Bếp tại nhà máy khách hàng</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <aside class="notes">
+          Sở hữu năng lực vận hành mạnh mẽ, Bizen dễ dàng đáp ứng hơn 20.000 suất ăn mỗi ngày. Chúng tôi linh hoạt cung cấp từ Bếp trung tâm hoặc setup, tiếp quản vận hành trực tiếp bếp ăn ngay tại nhà máy của quý vị.
+        </aside>
+      </section>
+
+      <!-- Slide 9: Nhân sự -->
+      <section>
+        <h2>Hệ thống Nhân sự & Đào tạo</h2>
+        <div class="split-layout">
+          <div class="split-col">
+            <h3 style="font-size: 1.1em; margin-bottom: 20px;">Tuân thủ & Chuẩn mực</h3>
+            <ul class="custom-list">
+              <li>Tuân thủ tuyệt đối tiêu chuẩn lao động <strong>RBA</strong> (Liên minh Cầm đồ Doanh nghiệp có Trách nhiệm).</li>
+              <li>100% nhân sự khám sức khỏe định kỳ.</li>
+              <li>Đào tạo liên tục chuyên môn: <strong>5S/6S, VSATTP</strong>.</li>
+              <li>Trang bị đầy đủ bảo hộ: Khẩu trang, găng tay, mũ y tế nhập khẩu.</li>
+            </ul>
+          </div>
+          <div class="split-col">
+            <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=800&auto=format&fit=crop" class="img-fluid" style="height: 250px;" alt="Staff Training">
+          </div>
+        </div>
+        <aside class="notes">
+          Một điểm sáng của Bizen khi làm việc với các tập đoàn đa quốc gia là chúng tôi tuân thủ nghiêm ngặt tiêu chuẩn nhân quyền RBA. Nhân sự của Bizen liên tục được đào tạo quy trình 5S, an toàn vệ sinh, tạo nên một đội ngũ tinh nhuệ và kỷ luật.
+        </aside>
+      </section>
+
+      <!-- Slide 10: Quy trình 1 chiều -->
+      <section>
+        <h2>Quy trình Quản lý Chất lượng 1 Chiều</h2>
+        <p style="font-size: 0.8em;">Kiểm soát nghiêm ngặt — Không lây nhiễm chéo — Lưu mẫu định kỳ</p>
+        
+        <div class="process-flow">
+          <div class="process-step">📦 Nhập liệu</div>
+          <div class="process-arrow">➔</div>
+          <div class="process-step">🔪 Sơ chế</div>
+          <div class="process-arrow">➔</div>
+          <div class="process-step">🍳 Chế biến</div>
+          <div class="process-arrow">➔</div>
+          <div class="process-step">🍱 Chia suất</div>
+          <div class="process-arrow">➔</div>
+          <div class="process-step">🍽️ Phục vụ</div>
+        </div>
+
+        <div class="grid-3" style="margin-top: 40px;">
+          <div class="card" style="padding: 15px; background: rgba(26, 107, 60, 0.05);">
+            <p style="font-size: 0.8em; margin:0;"><b>1. Nguyên tắc sống chín tách biệt</b></p>
+          </div>
+          <div class="card" style="padding: 15px; background: rgba(26, 107, 60, 0.05);">
+            <p style="font-size: 0.8em; margin:0;"><b>2. Triệt tiêu 100% rủi ro chéo</b></p>
+          </div>
+          <div class="card" style="padding: 15px; background: rgba(26, 107, 60, 0.05);">
+            <p style="font-size: 0.8em; margin:0;"><b>3. Lưu mẫu tủ lạnh 24h</b></p>
+          </div>
+        </div>
+        <aside class="notes">
+          Tại bếp Bizen, mọi thứ tuân thủ tuyệt đối quy trình chế biến 1 chiều. Nguyên liệu sống và chín không bao giờ giao cắt, triệt tiêu 100% rủi ro lây nhiễm chéo vi khuẩn, bảo vệ sức khỏe người lao động ở mức cao nhất.
+        </aside>
+      </section>
+
+      <!-- Slide 11: Chuỗi cung ứng -->
+      <section>
+        <h2>Chuỗi cung ứng & Nhà cung cấp</h2>
+        <div class="split-layout">
+          <div class="split-col" style="background: var(--primary-green); color: white;">
+            <h3 class="text-white" style="font-size: 1.2em; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 10px;">Kiểm soát 3 Bước</h3>
+            <ol style="font-size: 0.8em; padding-left: 20px; line-height: 1.8;">
+              <li>Đánh giá hồ sơ năng lực VietGAP, GlobalGAP.</li>
+              <li>Kiểm tra chất lượng thực tế tại nông trại/kho.</li>
+              <li>Kiểm định tại nguồn nhập liệu mỗi sáng (Test kit).</li>
+            </ol>
+          </div>
+          <div class="split-col">
+            <h3 class="text-orange" style="font-size: 1.2em;">Cam kết nguồn gốc</h3>
+            <ul class="custom-list">
+              <li><b>100%</b> Nguyên liệu có nguồn gốc rõ ràng.</li>
+              <li>Đánh giá & Audit nhà cung cấp định kỳ.</li>
+              <li>Luôn có biên chế <b>3-5 nhà cung cấp dự phòng</b> cho mỗi mặt hàng, chống đứt gãy.</li>
+            </ul>
+          </div>
+        </div>
+        <aside class="notes">
+          Chất lượng bữa ăn bắt đầu từ nguyên liệu. Chúng tôi chỉ hợp tác với các nhà cung cấp đạt chuẩn VietGAP, GlobalGAP. Để chống đứt gãy chuỗi cung ứng, mỗi mặt hàng Bizen luôn có 3 đến 5 nhà cung cấp dự phòng sẵn sàng đối ứng.
+        </aside>
+      </section>
+
+      <!-- Slide 12: Sự cố -->
+      <section>
+        <h2>Phương án Ứng phó Khẩn cấp</h2>
+        <p style="font-size: 0.8em; color: #666; margin-bottom: 20px;">Emergency Response Plan — Phản ứng cực nhanh trong <strong>10-15 phút</strong>.</p>
+        <div class="grid-3">
+          <div class="card" style="border-top-color: #E2E8F0;">
+            <div style="font-size: 2em; margin-bottom: 10px;">⚡</div>
+            <h4 style="font-size: 0.9em; color: var(--text-dark);">Mất Điện / Nước</h4>
+            <div style="color:var(--accent-orange); font-size:1.5em; margin:10px 0;">➔</div>
+            <p style="font-size: 0.75em;">Kích hoạt bếp Gas công nghiệp & Hệ thống bồn nước dự trữ 3 ngày.</p>
+          </div>
+          <div class="card" style="border-top-color: #E2E8F0;">
+            <div style="font-size: 2em; margin-bottom: 10px;">📈</div>
+            <h4 style="font-size: 0.9em; color: var(--text-dark);">Tăng Ca Đột Xuất</h4>
+            <div style="color:var(--accent-orange); font-size:1.5em; margin:10px 0;">➔</div>
+            <p style="font-size: 0.75em;">Kho đồ hộp, thực phẩm khô dự phòng giải quyết trong 10 phút.</p>
+          </div>
+          <div class="card" style="border-top-color: #E2E8F0;">
+            <div style="font-size: 2em; margin-bottom: 10px;">🚚</div>
+            <h4 style="font-size: 0.9em; color: var(--text-dark);">Thiếu Suất Ăn</h4>
+            <div style="color:var(--accent-orange); font-size:1.5em; margin:10px 0;">➔</div>
+            <p style="font-size: 0.75em;">Hệ thống bếp trung tâm điều phối và xe tải bù hàng hỏa tốc.</p>
+          </div>
+        </div>
+        <aside class="notes">
+          Rủi ro là điều không ai muốn, nhưng Bizen luôn có kịch bản đối phó. Khi mất điện, mất nước hay thiếu suất ăn đột xuất do tăng ca, đội ngũ Bizen cam kết xử lý và cung cấp thực phẩm bổ sung, bếp gas dự phòng chỉ trong vòng 10 đến 15 phút, không để gián đoạn sản xuất.
+        </aside>
+      </section>
+
+      <!-- PHẦN 3: DỊCH VỤ & THỰC ĐƠN -->
+
+      <!-- Slide 13: Các loại hình Dịch vụ -->
+      <section>
+        <h2>Hệ Sinh Thái Dịch Vụ Bizen</h2>
+        <div class="grid-3">
+          <div class="card" style="padding: 15px;">
+            <img src="https://images.unsplash.com/photo-1590846406792-0adc7f638f1d?q=80&w=400&auto=format&fit=crop" class="img-fluid" style="height: 150px; width: 100%; object-fit: cover; margin-bottom: 10px; border-radius: 6px;">
+            <h4 style="font-size: 0.85em; color: var(--primary-green);">1. Suất Ăn Công Nghiệp</h4>
+            <p style="font-size: 0.65em;">Vận hành bếp trực tiếp tại nhà máy DHG hoặc cung cấp từ trung tâm.</p>
+          </div>
+          <div class="card" style="padding: 15px;">
+            <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=400&auto=format&fit=crop" class="img-fluid" style="height: 150px; width: 100%; object-fit: cover; margin-bottom: 10px; border-radius: 6px;">
+            <h4 style="font-size: 0.85em; color: var(--primary-green);">2. Hoạt Động Văn Hóa</h4>
+            <p style="font-size: 0.65em;">Phối hợp công đoàn tổ chức tiệc sinh nhật, Giáng sinh, Trung thu.</p>
+          </div>
+          <div class="card" style="padding: 15px;">
+            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=400&auto=format&fit=crop" class="img-fluid" style="height: 150px; width: 100%; object-fit: cover; margin-bottom: 10px; border-radius: 6px;">
+            <h4 style="font-size: 0.85em; color: var(--primary-green);">3. Bizen Bistro</h4>
+            <p style="font-size: 0.65em;">Quầy hàng thức uống thư giãn, đồ ăn nhẹ trực tiếp tại khuôn viên.</p>
+          </div>
+        </div>
+        <aside class="notes">
+          Hệ sinh thái Bizen cung cấp không chỉ suất ăn công nghiệp. Chúng tôi còn mang đến giải pháp Bizen Bistro tiện lợi với thức uống, đồ ăn nhẹ ngay tại nhà máy, giúp tiết kiệm thời gian nghỉ ngơi của công nhân.
+        </aside>
+      </section>
+
+      <!-- Slide 14: Hình ảnh suất ăn -->
+      <section>
+        <h2>Thực Đơn Đa Dạng & Chi Phí Minh Bạch</h2>
+        <div class="grid-3" style="gap: 15px;">
+          <div>
+            <img src="https://images.unsplash.com/photo-1547592180-85f173990554?q=80&w=600&auto=format&fit=crop" class="img-cover" alt="Meal">
+            <h4 style="font-size: 0.8em; margin-top: 10px; text-align: center;">Thực đơn Tiêu chuẩn</h4>
+          </div>
+          <div>
+            <img src="https://images.unsplash.com/photo-1628294895950-9805252327bc?q=80&w=600&auto=format&fit=crop" class="img-cover" alt="Meal">
+            <h4 style="font-size: 0.8em; margin-top: 10px; text-align: center;">Thực đơn Cải thiện</h4>
+          </div>
+          <div>
+            <img src="https://images.unsplash.com/photo-1588168333986-5078d3ae3976?q=80&w=600&auto=format&fit=crop" class="img-cover" alt="Meal">
+            <h4 style="font-size: 0.8em; margin-top: 10px; text-align: center;">Thực đơn Chuyên gia VIP</h4>
+          </div>
+        </div>
+        <div style="background: var(--pure-white); padding: 15px; border-radius: 8px; font-size: 0.7em; margin-top: 20px; border-left: 4px solid var(--accent-orange); text-align: left;">
+          <b>* Cơ cấu giá minh bạch:</b> Áp dụng bảng triết tính chi tiết (Food cost, Labor cost, Operation cost), đảm bảo 100% chi phí thực phẩm được đầu tư xứng đáng vào khay cơm của người lao động.
+        </div>
+        <aside class="notes">
+          Quý vị có thể thấy trên màn hình là các suất ăn mẫu thực tế. Chúng tôi sử dụng khay Inox cao cấp, phân chia thực đơn đa dạng từ tiêu chuẩn đến chuyên gia. Bizen cũng áp dụng bảng triết tính cơ cấu giá minh bạch để quý vị thấy từng đồng chi phí được đầu tư vào nguyên liệu mâm cơm hiệu quả như thế nào.
+        </aside>
+      </section>
+
+      <!-- Slide 15: Văn hóa -->
+      <section>
+        <h2>Trợ thủ Xây dựng Văn hóa Doanh nghiệp</h2>
+        <p style="font-size: 0.8em;">Gắn kết nội bộ — Tạo động lực — Giữ chân nhân tài</p>
+        <div class="split-layout">
+          <div class="split-col">
+            <h3 class="text-orange" style="font-size: 1.1em;">Hơn cả một bữa ăn</h3>
+            <p style="font-size: 0.8em;">Điểm khác biệt độc quyền của Bizen: Chúng tôi tự hào phối hợp cùng Công đoàn DHG tổ chức:</p>
+            <ul class="custom-list">
+              <li>Mừng sinh nhật CBCNV hàng tháng.</li>
+              <li>Bữa ăn đặc biệt ngày Lễ (8/3, 20/10).</li>
+              <li>Lễ hội Trung Thu, Giáng Sinh, Tết Nguyên Đán.</li>
+            </ul>
+          </div>
+          <div class="split-col">
+            <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=600&auto=format&fit=crop" class="img-fluid" style="height:250px;" alt="Party">
+          </div>
+        </div>
+        <aside class="notes">
+          Điểm khác biệt độc quyền của Bizen là chúng tôi không chỉ nấu ăn. Chúng tôi tự hào là trợ thủ phối hợp cùng công đoàn nhà máy tổ chức các sự kiện văn hóa, sinh nhật, lễ Tết. Sự gắn kết này giúp người lao động thêm yêu mến và gắn bó với doanh nghiệp.
+        </aside>
+      </section>
+
+      <!-- PHẦN 4: BẢO CHỨNG -->
+
+      <!-- Slide 16: Chứng nhận -->
+      <section>
+        <h2>Chứng nhận Quốc tế & Giải thưởng</h2>
+        <p style="font-size: 0.8em; margin-bottom: 40px;">Minh bạch pháp lý và chất lượng qua các cơ quan thẩm quyền.</p>
+        <div class="grid-3" style="gap: 40px;">
+          <div style="text-align: center;">
+            <div style="height: 120px; width: 120px; background: #fff; border-radius: 50%; box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-size: 3em; color: var(--primary-green);">
+              📋
+            </div>
+            <h4 style="font-size: 0.8em;">VSATTP</h4>
+            <p style="font-size: 0.6em;">Chi cục An toàn Vệ sinh thực phẩm cấp</p>
+          </div>
+          <div style="text-align: center;">
+            <div style="height: 120px; width: 120px; background: #fff; border-radius: 50%; box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-size: 3em; color: var(--primary-green);">
+              🧪
+            </div>
+            <h4 style="font-size: 0.8em;">Quatest 3</h4>
+            <p style="font-size: 0.6em;">Phiếu xét nghiệm Sinh hóa & Nước sạch sinh hoạt</p>
+          </div>
+          <div style="text-align: center;">
+            <div style="height: 120px; width: 120px; background: #fff; border-radius: 50%; box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-size: 3em; color: var(--primary-green);">
+              🌿
+            </div>
+            <h4 style="font-size: 0.8em;">Môi trường</h4>
+            <p style="font-size: 0.6em;">Giấy phép xả thải & Bảo vệ môi trường</p>
+          </div>
+        </div>
+        <aside class="notes">
+          Mọi hoạt động của Bizen đều được chứng nhận bởi các cơ quan thẩm quyền, từ giấy phép VSATTP, giấy phép xả thải môi trường, cho đến các xét nghiệm nước sinh hoạt định kỳ qua Quatest 3.
+        </aside>
+      </section>
+
+      <!-- Slide 17: Khách hàng -->
+      <section>
+        <h2>Khách hàng Tiêu biểu & Trust</h2>
+        <p style="font-size: 0.8em; margin-bottom: 30px;">Sự tin tưởng từ các tập đoàn hàng đầu thế giới là bảo chứng lớn nhất.</p>
+        <div class="grid-3" style="margin-bottom: 20px;">
+          <div class="card">
+            <h3 class="text-navy" style="font-size: 1.5em; margin-bottom: 5px;">SMC</h3>
+            <p style="font-size: 0.7em; color: var(--accent-orange); font-weight: bold;">(NHẬT BẢN)</p>
+            <p style="font-size: 0.7em;">~ 2.000 suất / ngày</p>
+            <p style="font-size: 0.7em;">Vận hành đồng thời 5 nhà ăn.</p>
+          </div>
+          <div class="card">
+            <h3 class="text-navy" style="font-size: 1.5em; margin-bottom: 5px;">LIXIL</h3>
+            <p style="font-size: 0.7em; color: var(--accent-orange); font-weight: bold;">(NHẬT BẢN)</p>
+            <p style="font-size: 0.7em;">~ 1.500 suất / ngày</p>
+            <p style="font-size: 0.7em;">Vận hành 3 bếp ăn.</p>
+          </div>
+          <div class="card">
+            <h3 class="text-navy" style="font-size: 1.5em; margin-bottom: 5px;">Onsemi</h3>
+            <p style="font-size: 0.7em; color: var(--accent-orange); font-weight: bold;">(HOA KỲ)</p>
+            <p style="font-size: 0.7em;">~ 2.000 suất / ngày</p>
+            <p style="font-size: 0.7em;">Chuẩn khắt khe RBA toàn cầu.</p>
+          </div>
+        </div>
+        <p style="font-size: 0.7em;">Ngoài ra còn có: <b>Saitex International, Watabe Wedding VN...</b></p>
+        <aside class="notes">
+          Bảo chứng lớn nhất cho năng lực của Bizen chính là sự tin tưởng từ các tập đoàn hàng đầu thế giới như SMC, LIXIL của Nhật Bản và Onsemi của Mỹ. Việc vận hành đồng thời 5 nhà ăn cho SMC hay phục vụ hàng ngàn suất cho Onsemi chứng minh khả năng quản trị chuỗi phức tạp của chúng tôi.
+        </aside>
+      </section>
+
+      <!-- Slide 18: Lời Cảm Ơn -->
+      <section>
+        <h1 class="text-orange" style="font-size: 4em; margin-bottom: 20px;">TRÂN TRỌNG</h1>
+        <h3 class="text-navy" style="font-size: 1.2em; text-transform: uppercase;">CÔNG TY TNHH HỖ TRỢ CÔNG NGHIỆP BIZEN</h3>
+        
+        <div style="background: var(--pure-white); display: inline-block; padding: 25px 40px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); text-align: left; margin-top: 30px;">
+          <p style="font-size: 0.7em; margin-bottom: 10px;">📍 <b>Địa chỉ:</b> Lô C2, Khu phố 4, P. Tân Hiệp, Biên Hòa, Vietnam.</p>
+          <p style="font-size: 0.7em; margin-bottom: 10px;">📞 <b>Hotline:</b> <span class="text-orange">0919 980 689</span> – <span class="text-orange">0949 339 689</span></p>
+          <p style="font-size: 0.7em; margin-bottom: 0;">✉️ <b>Email:</b> Bizhome@bizen.com.vn</p>
+        </div>
+        <aside class="notes">
+          Chúng tôi rất mong muốn được đồng hành và trở thành hậu phương vững chắc cho sự phát triển của nhà máy. Xin chân thành cảm ơn quý Ban Lãnh Đạo đã lắng nghe. Sau đây, tôi xin phép được giải đáp các thắc mắc của quý vị.
+        </aside>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/notes/notes.min.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: 'c/t',
+      transition: 'fade', // Smooth premium transition
+      controls: true,
+      progress: true,
+      plugins: [ RevealNotes ],
+      dependencies: []
+    });
+  </script>
+</body>
+</html>
